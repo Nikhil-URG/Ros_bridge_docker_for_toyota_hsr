@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-IMAGE_NAME="custom-hsr-bridge"
+IMAGE_NAME="osrf/ros:foxy-ros1-bridge"
 # The name/substring to look for in the running docker list for the simulation
 SIM_CONTAINER_NAME_FILTER="tmc_wrs"
 
