@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-IMAGE_NAME="osrf/ros:foxy-ros1-bridge"
+IMAGE_NAME="custom-hsr-bridge"
 # The name/substring to look for in the running docker list for the simulation
 SIM_CONTAINER_NAME_FILTER="tmc_wrs"
 
@@ -44,3 +44,5 @@ sudo docker run -it --rm --net=host \
     --env ROS_MASTER_URI=${ROS_MASTER_URI} \
     --env ROS_DOMAIN_ID=0 \
     $IMAGE_NAME
+
+# sudo docker run -it 

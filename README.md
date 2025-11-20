@@ -45,10 +45,43 @@ and click on the play button to start the topics
 
 Topics like /joint_states and /tf will now begin publishing in the ROS 1 network.
 
+Source the ROS master on host PC
+----------------------
+```sh
+sudo sh set-rosmaster.sh
+```
+
+
 # Launching the Dynamic Bridge (ROS 2)
 
+In an new terminal run : 
 
-## Clone this bridge repository in a new terminal
+```sh
+docker run -it --rm --net=host \
+    --env ROS_MASTER_URI=$ROS_MASTER_URI \
+    --env ROS_DOMAIN_ID=0 \
+    osrf/ros:foxy-ros1-bridge \
+    bash
+```
+
+when it drops to shell run : 
+
+# 1. Source ROS 1 (Noetic)
+```sh
+source /opt/ros/noetic/setup.bash
+```
+
+# 2. Source ROS 2 (Foxy)
+```sh
+source /opt/ros/foxy/setup.bash
+```
+# 3. Run the dynamic bridge (bridges all topics it finds)
+```sh
+ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+```
+
+
+<!-- ## Clone this bridge repository in a new terminal
 ```sh
 git clone https://github.com/Nikhil-URG/Ros_bridge_docker_for_toyota_hsr.git
 cd hsr_ros2_bridge
@@ -67,7 +100,7 @@ The run_bridge.sh script automatically detects the running simulation container,
 chmod +x run_bridge.sh
 ```
 
-The script will first build the custom-hsr-bridge Docker image (this is a one-time process) and then launch the container. The bridge will then start piping all ROS 1 topics to the ROS 2 domain.
+The script will first build the custom-hsr-bridge Docker image (this is a one-time process) and then launch the container. The bridge will then start piping all ROS 1 topics to the ROS 2 domain. -->
 
 ## Verification
 ----------------------
